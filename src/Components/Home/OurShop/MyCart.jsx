@@ -26,30 +26,30 @@ const MyCart = () => {
                 fetch(`http://localhost:5000/carts/${item._id}`, {
                     method: 'DELETE'
                 })
-                .then(res => res.json())
-                .then(data => {
-                    if(data.deletedCount>0){
-                        refetch();
-                        Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                        )
-                    }
-                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
             }
         })
     }
 
     return (
-        <div className="w-full h-full">
+        <div className="w-full h-full mt-10 mx-10">
             <Helmet>
                 <title>Bristro Boss | My Cart</title>
             </Helmet>
             <div className="flex justify-evenly items-center mb-5">
                 <h1 className="text-xl font-semibold">Total Orders: {cart.length}</h1>
                 <h1 className="text-xl font-semibold">Total Price: $ {total}</h1>
-                <Link><button className="btn bg-orange-300 w-14 h-10 text-black hover:text-white border-none">Pay</button></Link>
+                <Link to={'/dashboard/reservation'}><button className="btn bg-orange-300 w-14 h-10 text-black hover:text-white border-none">Pay</button></Link>
             </div>
             <div>
                 <div className="overflow-x-auto w-full">
@@ -86,7 +86,6 @@ const MyCart = () => {
                                             <button onClick={() => handleDelete(item)} className="btn bg-red-600 text-white border-none"><FaTrashAlt></FaTrashAlt></button>
                                         </th>
                                     </tr>
-
                                 )
                             }
                         </tbody>

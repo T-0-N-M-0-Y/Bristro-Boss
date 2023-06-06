@@ -24,6 +24,7 @@ import AllUsers from './Components/DashboardItems/AllUsers.jsx';
 import AddItems from './Components/DashboardItems/AdminFeatures/AddItems.jsx';
 import AdminRoutes from './Components/PrivateRoutes/AdminRoutes.jsx';
 import ManageItems from './Components/DashboardItems/AdminFeatures/ManageItems.jsx';
+import Reservation from './Components/DashboardItems/UsersFeature/Reservation.jsx';
 
 const queryClient = new QueryClient()
 
@@ -52,10 +53,6 @@ const router = createBrowserRouter([
     element: <PrivateRoutes><Dashboard></Dashboard>,</PrivateRoutes>,
     children: [
       {
-        path: "mycart",
-        element: <MyCart></MyCart>
-      },
-      {
         path: "allusers",
         element: <AdminRoutes><AllUsers></AllUsers></AdminRoutes>
       },
@@ -66,6 +63,14 @@ const router = createBrowserRouter([
       {
         path: "manageitems",
         element: <AdminRoutes><ManageItems></ManageItems></AdminRoutes>
+      },
+      {
+        path: "mycart",
+        element: <MyCart></MyCart>
+      },
+      {
+        path: "reservation",
+        element: <Reservation></Reservation>
       },
     ]
   },
