@@ -13,7 +13,7 @@ const Reservation = () => {
     return (
         <div className="mt-40 mx-40">
             <Elements stripe={stripePromise}> 
-                <Payment price={price}></Payment>
+                <Payment cart={cart} price={price}></Payment>
             </Elements>
         </div>
     );

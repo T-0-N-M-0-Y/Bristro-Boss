@@ -10,7 +10,8 @@ const MyCart = () => {
     const [cart, refetch] = useCart()
     console.log(cart);
 
-    const total = cart.reduce((sum, item) => item.price + sum, 0)
+    const total = cart.reduce((sum, item) => item.price + sum, 0);
+    const totalPrice = parseFloat(total.toFixed(2));
 
     const handleDelete = item => {
         Swal.fire({
@@ -48,7 +49,7 @@ const MyCart = () => {
             </Helmet>
             <div className="flex justify-evenly items-center mb-5">
                 <h1 className="text-xl font-semibold">Total Orders: {cart.length}</h1>
-                <h1 className="text-xl font-semibold">Total Price: $ {total}</h1>
+                <h1 className="text-xl font-semibold">Total Price: $ {totalPrice}</h1>
                 <Link to={'/dashboard/reservation'}><button className="btn bg-orange-300 w-14 h-10 text-black hover:text-white border-none">Pay</button></Link>
             </div>
             <div>

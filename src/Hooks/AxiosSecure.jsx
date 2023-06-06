@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 
+const AXIOS = axios.create({
+    baseURL: 'http://localhost:5000'
+})
+
 const AxiosSecure = () => {
 
     const { logOut } = useContext(AuthContext);
     const navigate = useNavigate();
-
-    const AXIOS = axios.create({
-        baseURL: 'http://localhost:5000'
-    })
 
     useEffect(() => {
         AXIOS.interceptors.request.use((request) => {
@@ -32,7 +32,7 @@ const AxiosSecure = () => {
             }
         )
 
-    }, [logOut, navigate, AXIOS]);
+    }, [logOut, navigate]);
 
     return ([AXIOS])
 };
