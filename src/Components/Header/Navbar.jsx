@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/Authproviders";
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../Hooks/useCart";
+import UseAdmin from "../../Hooks/UseAdmin";
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
+
+    const [isAdmin] = UseAdmin();
 
     const [cart] = useCart();
 
@@ -19,7 +22,12 @@ const Navbar = () => {
     const navOptions = <>
         <Link to={'/'}><li className="hover:underline mr-5">HOME</li></Link>
         <Link><li className="hover:underline mr-5">CONTACT US</li></Link>
-        <Link to={'/dashboard'}><li className="hover:underline mr-5">DASHBOARD</li></Link>
+        {
+            isAdmin ?
+                <Link to={'/dashboard/adminhome'}><li className="hover:underline mr-5">DASHBOARD</li></Link>
+                :
+                <Link to={'/dashboard/userhome'}><li className="hover:underline mr-5">DASHBOARD</li></Link>
+        }
         <Link to={'/ourmenu'}><li className="hover:underline mr-5">OUR MENU</li></Link>
         <Link to={'/ourshop/salad'}><li className="hover:underline">OUR SHOP</li></Link>
     </>

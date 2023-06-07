@@ -36,7 +36,7 @@ const Dashboard = () => {
                                 </>
                                 :
                                 <>
-                                    <li><NavLink to={'/dashboard/home'}><FaHome></FaHome> User Home</NavLink></li>
+                                    <li><NavLink to={'/dashboard/userhome'}><FaHome></FaHome> User Home</NavLink></li>
                                     <li><NavLink to={'/dashboard/reservation'}><FaCalendar></FaCalendar> Reservation</NavLink></li>
                                     <li><NavLink to={'/dashboard/payment'}><FaWallet></FaWallet> Payment History</NavLink></li>
                                     <li><NavLink to={'/dashboard/mycart'}><FaShoppingCart></FaShoppingCart> My Cart</NavLink></li>

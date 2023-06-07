@@ -25,6 +25,8 @@ import AddItems from './Components/DashboardItems/AdminFeatures/AddItems.jsx';
 import AdminRoutes from './Components/PrivateRoutes/AdminRoutes.jsx';
 import ManageItems from './Components/DashboardItems/AdminFeatures/ManageItems.jsx';
 import Reservation from './Components/DashboardItems/UsersFeature/Reservation.jsx';
+import AdminHome from './Components/DashboardItems/AdminFeatures/AdminHome.jsx';
+import UserHome from './Components/DashboardItems/UsersFeature/UserHome.jsx';
 
 const queryClient = new QueryClient()
 
@@ -53,6 +55,10 @@ const router = createBrowserRouter([
     element: <PrivateRoutes><Dashboard></Dashboard>,</PrivateRoutes>,
     children: [
       {
+        path: "adminhome",
+        element: <AdminRoutes><AdminHome></AdminHome></AdminRoutes>
+      },
+      {
         path: "allusers",
         element: <AdminRoutes><AllUsers></AllUsers></AdminRoutes>
       },
@@ -63,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "manageitems",
         element: <AdminRoutes><ManageItems></ManageItems></AdminRoutes>
+      },
+      {
+        path: "userhome",
+        element: <UserHome></UserHome>
       },
       {
         path: "mycart",
