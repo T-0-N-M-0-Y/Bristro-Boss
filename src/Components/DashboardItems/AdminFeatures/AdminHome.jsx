@@ -3,7 +3,7 @@ import { AuthContext } from "../../../Providers/Authproviders";
 import { Helmet } from "react-helmet-async";
 import AxiosSecure from "../../../Hooks/axiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import { FaCarSide, FaProductHunt, FaUsers, FaWallet } from "react-icons/fa";
+import { FaProductHunt, FaTruckMoving, FaUsers, FaWallet } from "react-icons/fa";
 
 const AdminHome = () => {
 
@@ -32,7 +32,7 @@ const AdminHome = () => {
                     <div className="stat-value">${stats.totalRevenue}</div>
                     <div className="stat-title">Revenue</div>
                     <div className="stat-figure text-secondary">
-                        <FaWallet className="text-3xl"></FaWallet>
+                        <FaWallet className="text-5xl ml-2"></FaWallet>
                     </div>
                 </div>
 
@@ -40,7 +40,7 @@ const AdminHome = () => {
                     <div className="stat-value">{stats.users}</div>
                     <div className="stat-title">Customers</div>
                     <div className="stat-figure text-secondary">
-                        <FaUsers className="text-3xl"></FaUsers>
+                        <FaUsers className="text-5xl ml-2"></FaUsers>
                     </div>
                 </div>
 
@@ -48,14 +48,14 @@ const AdminHome = () => {
                     <div className="stat-value">{stats.products}</div>
                     <div className="stat-title">Products</div>
                     <div className="stat-figure text-secondary">
-                        <FaProductHunt className="text-3xl"></FaProductHunt>
+                        <FaProductHunt className="text-5xl ml-2"></FaProductHunt>
                     </div>
                 </div>
                 <div className="stat">
                     <div className="stat-value">{stats.orders}</div>
                     <div className="stat-title">Orders</div>
                     <div className="stat-figure text-secondary">
-                        <FaCarSide className="text-3xl"></FaCarSide>
+                        <FaTruckMoving className="text-5xl ml-2"></FaTruckMoving>
                     </div>
                 </div>
 
