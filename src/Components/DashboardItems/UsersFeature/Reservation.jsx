@@ -2,6 +2,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Payment from "./Payment";
 import useCart from "../../../Hooks/useCart";
+
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_KEY);
 
 const Reservation = () => {

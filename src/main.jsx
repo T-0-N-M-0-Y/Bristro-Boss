@@ -19,7 +19,6 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import Dashboard from './Components/Home/OurShop/Dashboard.jsx';
-import MyCart from './Components/Home/OurShop/myCart.jsx';
 import AllUsers from './Components/DashboardItems/AllUsers.jsx';
 import AddItems from './Components/DashboardItems/AdminFeatures/AddItems.jsx';
 import AdminRoutes from './Components/PrivateRoutes/AdminRoutes.jsx';
@@ -27,6 +26,7 @@ import ManageItems from './Components/DashboardItems/AdminFeatures/ManageItems.j
 import Reservation from './Components/DashboardItems/UsersFeature/Reservation.jsx';
 import AdminHome from './Components/DashboardItems/AdminFeatures/AdminHome.jsx';
 import UserHome from './Components/DashboardItems/UsersFeature/UserHome.jsx';
+import MyCart from './Components/Home/OurShop/MyCart.jsx';
 
 const queryClient = new QueryClient()
 
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <PrivateRoutes><Dashboard></Dashboard>,</PrivateRoutes>,
+    element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
     children: [
       {
         path: "adminhome",
