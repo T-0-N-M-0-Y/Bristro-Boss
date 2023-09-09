@@ -1,15 +1,14 @@
 import { Helmet } from "react-helmet-async";
-import GoGiFa from "../../GoGiFa/GoGiFa";
 import { useContext } from "react";
-import { AuthContext } from "../../../Providers/Authproviders";
-import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../../Providers/Authproviders";
+import GoGiFa from "../../GoGiFa/GoGiFa";
 
-const Signup = () => {
+const SignUp = () => {
 
-    const { createUser, updateUserProfile } = useContext(AuthContext);
- 
+    const { createUserForEmailPassLogin, updateUserProfile, logOut } = useContext(AuthContext);
+
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const navigate = useNavigate()
@@ -17,7 +16,7 @@ const Signup = () => {
     const onSubmit = data => {
         console.log(data);
 
-        createUser(data.email, data.password)
+        createUserForEmailPassLogin(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
@@ -25,32 +24,25 @@ const Signup = () => {
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
 
-                        const saveUser = { name: data.name, email: data.email }
-                        console.log(saveUser);
+                        const userSaved = { name: data.name, email: data.email }
 
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://assignment-12-sports-academies-server-site-t-0-n-m-0-y.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
                             },
-                            body: JSON.stringify(saveUser)
+                            body: JSON.stringify(userSaved)
                         })
                             .then(res => res.json())
                             .then(data => {
                                 if (data.insertedId) {
                                     reset();
-                                    Swal.fire({
-                                        title: 'Wellcome To Bristro Boss!!!',
-                                        showClass: {
-                                            popup: 'animate__animated animate__fadeInDown'
-                                        },
-                                        hideClass: {
-                                            popup: 'animate__animated animate__fadeOutUp'
-                                        }
-                                    })
                                 }
                             })
-                        navigate('/')
+                        logOut()
+                            .then(() => { })
+                            .catch(error => console.log(error))
+                        navigate('/login')
                     })
                     .catch(error => console.log(error))
             })
@@ -61,7 +53,7 @@ const Signup = () => {
             <Helmet>
                 <title>Bristro Boss | Sign up</title>
             </Helmet>
-            <div className='py-20 w-1/2 h-screen mx-auto border-2 shadow-2xl'>
+            <div className='py-24 md:w-1/2 h-screen mx-auto border-2 shadow-2xl'>
                 <h1 className='text-2xl font-bold text-center'>Sign Up</h1>
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                     <div className="form-control">
@@ -88,12 +80,13 @@ const Signup = () => {
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input type="password" {...register("password", { required: true, minLength: 6, maxLength: 20 })} placeholder="password" className="input input-bordered" />
+                        <input type="password" {...register("password", { required: true, minLength: 6, maxLength: 20, pattern: /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z!@#$%^&*\d]+$/ })} placeholder="password" className="input input-bordered" />
                         {errors.password?.type === 'required' && <p className="text-red-500">password is required</p>}
                         {errors.password?.type === 'minLength' && <p className="text-red-500">password must be 6 characters</p>}
+                        {errors.password?.type === 'pattern' && <p className="text-red-500">password must have a Capital letter & a Special Charecter</p>}
                     </div>
                     <div className="form-control mt-6">
-                        <input className="btn bg-yellow-600 text-white hover:bg-green-700 border-none" type="submit" value="Sign Up" />
+                            <input className="btn bg-orange-800 text-white hover:bg-orange-500 border-none w-full" type="submit" value="Sign Up" />
                     </div>
                 </form>
                 <GoGiFa></GoGiFa>
@@ -102,4 +95,4 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+export default SignUp;

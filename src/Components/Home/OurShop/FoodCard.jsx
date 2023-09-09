@@ -40,7 +40,7 @@ const FoodCard = ({ item }) => {
 
     return (
         <div>
-            <div className="card w-96 h-full bg-slate-100">
+            <div className="card w-96 h-full bg-slate-100 hover:shadow-lg transform hover:scale-105 transition duration-300">
                 <figure>
                     <img src={image} alt="Shoes" className="" />
                 </figure>
